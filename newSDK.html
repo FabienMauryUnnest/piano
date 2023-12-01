@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="privacy_test.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<script>
+window._pac = window._pac || {};
+_pac.cookieSecure = false;
+_pac.privacyDefaultMode = 'optin';
+_pac.isVisitorClientSide= true;
+</script>
+
+<script type="text/javascript" crossorigin="anonymous" src="https://tag.aticdn.net/piano-analytics.js"></script>
+
+    <title>TestPaginaSDK</title>
+
+</head>
+
+  <body>
+    <h1>New SDK Pagina</h1>
+    <a class="btn-secondary" id="" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/newSDK.html" onclick="clicevent()"> Clic event </a>
+    <a class="btn-secondary" id="optin" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/newSDK.html" onclick="clicoptin()"> Clic optin </a>
+    <a class="btn-secondary" id="exempt" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/newSDK.html" onclick="clicexempt()"> Clic exempt </a>
+    <a class="btn-secondary" id="transaction" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/newSDK.html" onclick="transaction()"> Clic Transaction </a>
+    <a class="btn-secondary" id="moteur" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/newSDK.html" onclick="moteur()"> Clic Moteur </a>
+    <a class="btn-secondary" id="moteur" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/newSDK.html" onclick="force()"> Clic Force </a>
+    <a class="btn-secondary" id="" href="http://support.atinternet.tools/formation/Fabien%20Maury/GTM/gtmDidomi.html" onclick="clicevent()"> Clic redir </a>
+
+  </body>
+
+
+  <script type="text/javascript">
+    pa.setConfigurations({
+      site: 640263,
+      collectDomain: "https://njxhwkh.pa-cd.com",
+      campaignPrefix: ["utm_", "at_"]
+       });
+  
+  </script>        
+<script>
+
+// if (!pa.privacy.getMode()) { //si le mode visiteur n'existe pas
+//       pa.privacy.setMode('exempt');
+//     } else {
+//         //Do nothing
+//     };
+
+// pa.privacy.setMode('no-consent');
+pa.privacy.include.properties(['av_*']); // Will be included in all modes
+// pa.privacy.exclude.properties(['article_category','article_date'], ['exempt']); // Will be excluded in all modes
+pa.privacy.include.events(['av.play']); // Will be included in all modes
+
+var date = new Date();
+
+pa.setUser('WEB-testCookie1', 'premium', true);
+
+pa.setProperties({
+  'page_premium': false,
+  'article_category': 'category',
+  'article_date': 123456,
+  'article_author': 'Fabien',
+  'd:date_indicateur': date.toISOString()
+}, {
+  'persistent': true,
+});
+
+pa.sendEvent('page.display', {
+'page' : 'testENRICH',
+'page_chapter1': 'chap1',
+'page_chapter3': 'chap3',
+"numero_rencontre": 4447,
+"achat_automobile": "Peugeot",
+"n33": 2,
+"billets_train_avion": "viouu"
+});
+
+
+// let products = ecommerce.impressions;
+
+// for (let i=0; i<products.length; i++){
+//   const product = products[i];
+//   pa.sendEvent("product.display", { 
+//     product_id: product.id, // mandatory property 
+//     product: product.name, 
+//     product_pricetaxincluded: product.price,
+//     product_category1: product.category 
+//   });
+// }
+
+// pa.sendEvent("cart.display", {
+//   cart_id: "testSTATUT2", // mandatory property
+//   cart_currency: "EUR",
+//   cart_turnovertaxincluded: 1399.9,
+//   cart_turnovertaxfree: 1120.9,
+//   cart_quantity: 1,
+//   cart_nbdistinctproduct: 1,
+// });
+
+// pa.sendEvents([
+//   {
+//     name: "cart.awaiting_payment",
+//     data: {
+//       cart_id: "testSTATUT2", // mandatory property
+//       cart_version: "VER02", // mandatory property
+//       cart_currency: "EUR",
+//       cart_creation_utc: 1666196008,
+//       cart_turnovertaxincluded: 1399.9,
+//       cart_turnovertaxfree: 1120.9,
+//       cart_quantity: 1,
+//       cart_nbdistinctproduct: 1,
+//       shipping_delivery: "Express",
+//       shipping_costtaxincluded: 11.99,
+//       shipping_costtaxfree: 10.99,
+//       transaction_statut: "validated"
+//     },
+//   },
+//   {
+//     name: "product.awaiting_payment",
+//     data: {
+//       cart_id: "testSTATUT2", // mandatory property
+//       cart_version: "VER02", // mandatory property
+//       product_id: "STATUT2", // mandatory property
+//       product: "Laptop AX174",
+//       product_variant: "8Go RAM",
+//       product_brand: "Laptop",
+//       product_discount: false,
+//       product_pricetaxincluded: 1399.9,
+//       product_pricetaxfree: 1120.9,
+//       product_stock: true,
+//       product_category1: "Hardware",
+//       product_category2: "Computer",
+//       product_category3: "Gaming",
+//       product_category4: "Laptop",
+//       product_quantity: 1,
+//     },
+//   },
+// ]);
+
+// pa.setUser('WEB-2', 'premium');
+
+var myMedia = new pa.avInsights.Media(5, 5); // Set heartbeats value (5 seconds)
+
+var properties = {
+  av_content_id: 'fge234', //mandatory
+  av_content: 'myContent',
+  av_content_type: 'Video',
+  av_content_duration: 10000,
+  av_content_genre: ['entertainment'],
+  av_content_version: 'short',
+  av_player: 'HTML5_V123',
+  av_player_version: '1b',
+  av_player_position: 'top',
+  av_broadcasting_type: 'On Demand',
+  av_publication_date: 1562055880,
+  av_show: 'The gist of the game',
+  av_show_season: 'Season 1',
+  av_episode_id: '3134',
+  av_channel: 'INFO',
+  av_author: 'Piano',
+  av_broadcaster: 'Direction 123',
+  av_language: 'EN',
+  av_subtitles: 'FR',
+  av_launch_reason: 'Auto'
+};
+
+// Set media properties
+myMedia.setProps(properties);
+
+// Play attempt (cursor position 0 second)
+myMedia.play(0);
+
+
+function moteur(){
+  pa.sendEvent('internal_search_result.display', {
+  'ise_keyword' : 'mot clé',
+  'ise_page' :  'test_string',
+  'ise_result' : 1 //  0 = recherche sans resultat et 1 = recherche avec resultat
+}); 
+}
+
+function clicevent(){
+pa.sendEvent('click.action', {
+  'click' : 'click name',
+  'click_chapter1' : 'level 1',
+  'click_chapter2' : 'level 2',
+  'click_chapter3' : 'level 3'
+});
+}
+
+function transaction(){
+  pa.sendEvents([
+  {
+    name: "transaction.confirmation",
+    data: {
+      cart_id: "LAPW221C", // mandatory property
+      cart_currency: "EUR",
+      cart_turnovertaxincluded: 1399.9,
+      cart_turnovertaxfree: 1120.9,
+      cart_quantity: 1,
+      cart_nbdistinctproduct: 1,
+      shipping_delivery: "Express",
+      shipping_costtaxincluded: 11.99,
+      shipping_costtaxfree: 10.99,
+      transaction_id: "TR221SI", // mandatory property
+      transaction_promocode: ["REDUC10"],
+      transaction_firstpurchase: true,
+      payment_mode: "Credit card",
+    },
+  },
+  {
+    name: "product.purchased",
+    data: {
+      cart_id: "LAPW221C", // mandatory property
+      product_id: "LPTAX174", // mandatory property
+      product: "Laptop AX174",
+      product_variant: "8Go RAM",
+      product_brand: "Laptop",
+      product_discount: false,
+      product_pricetaxincluded: 1399.9,
+      product_pricetaxfree: 1120.9,
+      product_currency: "EUR",
+      product_stock: true,
+      product_category1: "Hardware",
+      product_category2: "Computer",
+      product_category3: "Gaming",
+      product_category4: "Laptop",
+      product_quantity: 1,
+      payment_mode: "Credit card",
+      transaction_id: "TR221SI", // mandatory property
+      transaction_promocode: ["REDUC10"],
+    },
+  },
+  {
+    name: "product.purchased",
+    data: {
+      cart_id: "LAPW221C", // mandatory property
+      product_id: "LPTAX176", // mandatory property
+      product: "Laptop AX176",
+      product_variant: "16Go RAM",
+      product_brand: "Laptop",
+      product_discount: false,
+      product_pricetaxincluded: 1599.9,
+      product_pricetaxfree: 1220.9,
+      product_currency: "EUR",
+      product_stock: true,
+      product_category1: "Hardware",
+      product_category2: "Computer",
+      product_category3: "Gaming",
+      product_category4: "Laptop",
+      product_quantity: 1,
+      payment_mode: "Credit card",
+      transaction_id: "TR221SI", // mandatory property
+      transaction_promocode: ["REDUC10"],
+    },
+  },
+]);
+  }
+
+const params = new URLSearchParams(window.location.search)
+for (const param of params) {
+console.log(param)
+}
+
+//TRACKING MOTEUR INTERNE POUR AUTOMATISER LA PAGE DE RESULTAT
+var test = document.querySelector('#block-gs1-content > div > div > nav > ul > li.pager__item.pager__item--last > a'); //prendre ici la div precisant s'il y a un resultat ou non
+var value = test.href ;
+var split = parseInt(value.split('=')[3]);
+
+pa.sendEvent('internal_search_result.display', {
+  'ise_keyword' : 'Internal keyword',
+  'ise_page' : split,
+  'page': 'Page title'
+});
+
+function force(){
+  pa.privacy.setMode('optin');
+  pa.sendEvent('click.action',
+    {
+    "click": "clic optin",
+    "src_medium": params.get('at_medium'),
+    "src_campaign": params.get('at_campaign'),
+    "src_force": true
+    }
+);
+}
+
+function clicoptin(){
+  pa.sendEvent('click.action', {'click' : 'optin'})
+  pa.privacy.setMode('optin');
+}
+
+function clicexempt(){
+  pa.sendEvent('click.action', {'click' : 'exempt'})
+  pa.privacy.setMode('exempt');
+}
+
+</script>
+</html>

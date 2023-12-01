@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="privacy_test.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+
+// // Activating the Consents feature
+//   window.pdl = window.pdl || {};
+//   window.pdl.requireConsent = true;
+//   window.pdl.consent = {
+//     defaultPreset: {
+//       PA: 'essential'
+//     }
+//   };
+ 
+//   // List of exempted custom properties
+//   window.pdl.consent_items = {
+//     "PA": {
+//       "properties": {
+//         "hostname": "essential",
+//       },
+//       "events": { //exemption des evenements
+//         "book.display": "essential"
+//      }
+//     }
+//   };
+
+window._pac = window._pac || {};
+_pac.site = 640263;
+_pac.collectDomain = 'https://njxhwkh.pa-cd.com';
+_pac.cookieSecure = false;
+_pac.privacyDefaultMode = 'exempt';
+
+</script>
+<script type="text/javascript" crossorigin="anonymous" src="https://tag.aticdn.net/piano-analytics.js"></script>
+
+    <title>Asynchronous Pagina</title>
+
+</head>
+
+  <body>
+    <h1>Asynchronous SDK Pagina</h1>
+    <a class="btn-secondary" id="" href="#" onclick="clicevent()"> Clic event </a>
+    <a class="btn-secondary" id="optin" href="#" onclick="clicoptin()"> Clic optin </a>
+    <a class="btn-secondary" id="exempt" href="#" onclick="clicexempt()"> Clic exempt </a>
+    <a class="btn-secondary" id="transaction" href="#" onclick="transaction()"> Clic Transaction </a>
+    <a class="btn-secondary" id="moteur" href="#" onclick="moteur()"> Clic Moteur </a>
+
+  </body>
+
+<script>
+
+let _paq = window._paq || [];
+if (!_paq.push(["privacy.getMode()"])){
+_paq.push(["privacy.setMode", "exempt"]);
+} else {
+
+};
+
+_paq.push(["privacy.include.properties", (['hostname', 'paw2'])]);
+
+_paq.push(['setUser', 'ID18859', 'Asynchronous', true]);
+_paq.push(['sendEvent', 
+'page.display', {
+  "page": "Asynchronous2",
+  "hostname": "test",
+  "paw2": "F"
+}]);
+_paq.push(['sendEvent', 
+'book.display', {
+  "page": "Asynchronous",
+  "hostname": "test",
+}]);
+
+// function moteur(){
+//   pa.sendEvent('internal_search_result.display', {
+//   'ise_keyword' : 'mot cle',
+//   'ise_page' :  'test_string',
+//   'ise_result' : 1 //  0 = recherche sans resultat et 1 = recherche avec resultat
+// }); 
+// }
+
+// function clicevent(){
+// pa.sendEvent('click.action', {
+//   'click' : 'click name',
+//   'click_chapter1' : 'level 1',
+//   'click_chapter2' : 'level 2',
+//   'click_chapter3' : 'level 3'
+// });
+// }
+
+// function transaction(){
+//   pa.sendEvents([
+//   {
+//     name: "transaction.confirmation",
+//     data: {
+//       cart_id: "LAPW221C", // mandatory property
+//       cart_currency: "EUR",
+//       cart_turnovertaxincluded: 1399.9,
+//       cart_turnovertaxfree: 1120.9,
+//       cart_quantity: 1,
+//       cart_nbdistinctproduct: 1,
+//       shipping_delivery: "Express",
+//       shipping_costtaxincluded: 11.99,
+//       shipping_costtaxfree: 10.99,
+//       transaction_id: "TR221SI", // mandatory property
+//       transaction_promocode: ["REDUC10"],
+//       transaction_firstpurchase: true,
+//       payment_mode: "Credit card",
+//     },
+//   },
+//   {
+//     name: "product.purchased",
+//     data: {
+//       cart_id: "LAPW221C", // mandatory property
+//       product_id: "LPTAX174", // mandatory property
+//       product: "Laptop AX174",
+//       product_variant: "8Go RAM",
+//       product_brand: "Laptop",
+//       product_discount: false,
+//       product_pricetaxincluded: 1399.9,
+//       product_pricetaxfree: 1120.9,
+//       product_currency: "EUR",
+//       product_stock: true,
+//       product_category1: "Hardware",
+//       product_category2: "Computer",
+//       product_category3: "Gaming",
+//       product_category4: "Laptop",
+//       product_quantity: 1,
+//       payment_mode: "Credit card",
+//       transaction_id: "TR221SI", // mandatory property
+//       transaction_promocode: ["REDUC10"],
+//     },
+//   },
+//   {
+//     name: "product.purchased",
+//     data: {
+//       cart_id: "LAPW221C", // mandatory property
+//       product_id: "LPTAX176", // mandatory property
+//       product: "Laptop AX176",
+//       product_variant: "16Go RAM",
+//       product_brand: "Laptop",
+//       product_discount: false,
+//       product_pricetaxincluded: 1599.9,
+//       product_pricetaxfree: 1220.9,
+//       product_currency: "EUR",
+//       product_stock: true,
+//       product_category1: "Hardware",
+//       product_category2: "Computer",
+//       product_category3: "Gaming",
+//       product_category4: "Laptop",
+//       product_quantity: 1,
+//       payment_mode: "Credit card",
+//       transaction_id: "TR221SI", // mandatory property
+//       transaction_promocode: ["REDUC10"],
+//     },
+//   },
+// ]);
+//   }
+
+function clicoptin(){
+_paq.push(['sendEvent', 'click.action', {"click": "opt-in Asynchrone"}]);
+// _paq.push(['setPrivacyMode', 'optin']);
+// _paq.push(['setMode', 'optin']);
+_paq.push(['privacy.setMode', 'optin']);
+}
+
+// function clicexempt(){
+//   pa.sendEvent('click.action', {'click' : 'exempt'})
+//   pa.privacy.setMode('exempt');
+// }
+
+</script>
+</html>

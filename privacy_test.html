@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="privacy_test.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <title>TestPaginaCW</title>
+
+<script type="text/javascript" src="https://tag.aticdn.net/613023/smarttag.js"></script>
+  </head>
+
+  <body>
+    <h1>Test Pagina</h1>
+<br>
+<a class="btn-primary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="return tag.events.send('click.action',{'click': 'click name'});"> Hit clic </a>
+<a class="btn-primary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/preferences.html" onclick="return tag.click.send({elem:this, name:'PrivaConf', level2:'clickLvl2', type:'navigation'});"> Go to : Politique de Confidentialite </a>
+<a class="btn-primary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/vide.html" onclick="return tag.click.send({elem:this, name:'vide', type:'navigation'});"> Go to : Empty page </a>
+<br>
+<br>
+<br>
+<a class="btn-secondary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="fonctionoptin()"> Je veux opt-in </a>
+<a class="btn-primary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="fonctionexempt()"> Je veux exempt </a>
+<a class="btn-primary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="fonctioncustom()"> Je veux no-consent </a>
+<a class="btn-third" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="fonctionoptout()"> Je veux opt-out </a>
+<a class="btn-secondary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="force()"> src_force </a>
+<a class="btn-secondary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="goal()"> Goal type </a>
+<br>
+<br>
+<br>
+<a class="btn-secondary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="clicevent()"> Clic event </a>
+<a class="btn-primary" style="text-decoration: none;" href="http://support.atinternet.tools/formation/Fabien%20Maury/Test_privacy/privacy_test.html" onclick="return tag.click.send({elem:this, name:'testDL', type:'download'});"> Clic de telechargement</a>
+
+<a class="btn-primary" style="text-decoration: none;" href="" onclick="javascript:window.tag.privacy.setVisitorOptout()">Desactiver les cookies de la mesure d''audience strictement necessaire</a>
+</body>
+
+
+<script>
+var tag = new ATInternet.Tracker.Tag({cookieSecure: true});
+
+
+if (!tag.privacy.getVisitorMode()) { //si le mode visiteur n'existe pas
+        tag.privacy.setVisitorMode('cnil', 'exempt');
+    } else {
+        //Do nothing
+    };
+    
+tag.privacy.extendIncludeBuffer(['events_name', 'events_data_page_$', 'events_data_caisier']);
+
+// tag.events.send('consent.display',
+//     {
+//     "src_medium": 'Sponsored Links',
+//     "src_campaign": "CampagneTEST",
+//     "b:src_force": true
+//     }
+// );
+
+// tag.setProp('a:S:array_string_test', '["Topic1","Topic2"]', true);
+
+// tag.internalSearch.send({
+//   keyword:'mySearch',
+//   resultPageNumber: 2,
+//   resultPosition: 11
+// });
+
+// tag.events.send('account.creation',
+//     {
+//       'adblock' : 'test3',
+//       'site_level2' : '3',
+//       'activity': 'test3',
+//     }
+// );
+
+// tag.customVars.set({
+//     site: {
+//         2: 2,
+// }
+// });
+
+// tag.events.add('transaction.confirmation',
+//   {
+//     'cart_id': '11111112', 
+//     'cart_turnovertaxincluded': 150, 
+//     'cart_nbdistinctproduct': 1,
+//     'transaction_id': '11111112'
+//   }
+// );
+
+tag.setProp('d:date_indicateur', '2021-04-09 00:00:00', true);
+
+tag.events.send('page.display', 
+{
+	'page':'levels',
+  'page_chapter1':'chapter1',
+  'page_chapter2':'chapter2',
+  'page_chapter3': '',
+  'desactivation': 'deactivated test 3'
+  // 'caisier': 'test3'
+}
+);
+
+// tag.page.set({
+//     name:'pageprop2'
+// });
+// tag.dispatch();
+
+// tag.richMedia.add({
+//     mediaType: 'video',
+//     playerId: 99661,
+//     mediaLevel2: 'mediaLevel2',
+//     mediaLabel: 'mediaVideo',
+//     refreshDuration: {
+//         0: 60
+//     },
+//     duration: '20',
+//     isEmbedded: false,
+//     broadcastMode: 'clip'
+// });
+// tag.richMedia.send({
+//     action: 'play',
+//     playerId: 99661,
+//     mediaLabel: 'mediaVideo'
+// });
+
+// function stop(){
+//   tag.richMedia.send({
+//     action: 'stop',
+//     playerId: 99661,
+//     mediaLabel: 'mediaVideo'
+// });
+// }
+
+/*
+tag.events.send('mv_test.display',
+    {
+      'mv_creation' : 'deltaTagging',
+      'mv_test' : 'testEvent',
+      'mv_wave' : 1
+    }
+);
+*/
+
+/*
+tag.events.add('cart.creation',
+  {
+    'cart_id': '1111112', 
+    'cart_turnovertaxincluded': 150, 
+    'cart_nbdistinctproduct': 1
+  }
+);
+
+tag.events.add('cart.display',
+  {
+    'cart_id': '1111112', 
+    'cart_turnovertaxincluded': 150, 
+    'cart_nbdistinctproduct': 1
+  }
+);
+
+tag.events.add('cart.awaiting_payment',
+  {
+    'cart_id': '1111112',
+    'cart_version': 'test',
+    'cart_turnovertaxincluded': 150, 
+    'cart_nbdistinctproduct': 1
+  }
+);
+
+tag.events.add('transaction.confirmation',
+  {
+    'cart_id': '1111112', 
+    'cart_turnovertaxincluded': 150, 
+    'cart_nbdistinctproduct': 1,
+    'transaction_id': '1111112'
+  }
+);
+*/
+
+
+// tag.identifiedVisitor.set({
+//     id: 'abcd123',
+//     category: 1
+// });
+
+// tag.events.add('publisher.display',
+//   {
+//     'onsitead_type': 'Publisher',
+//     'onsitead_campaign': 'TEST2406',
+//     'onsitead_category': 'Gold',
+//     'onsitead_creation': 'Banner_main',
+//     'onsitead_variant': 'Blue',
+//     'onsitead_format': '400x300',
+//     'onsitead_general_placement': 'Sidebar',
+//     'onsitead_detailed_placement': 'Sidebar_bottom',
+//     'onsitead_advertiser': 'My Site',
+//     'onsitead_url': 'www.mysite.com'
+//   }
+// );
+
+
+/*
+tag.setProps({
+    "utm_medium": 'Sponsored Links',
+    "utm_campaign": "CampagneTEST",
+    "src_medium": 'Sponsored Links',
+    "src_campaign": "CampagneTESTsrc",
+    "src_force": "true"
+}, true);
+*/
+
+// tag.events.send('av.start',
+//   {
+//     'av_content_id': 'test1event',
+//     'av_session_id': 'IJKL4',
+//     'av_position': 1
+//   }
+// );
+
+// tag.events.send('av.stop',
+// {
+//     'av_content_id': 'test1position',
+//     'av_session_id': 'IJKL3',
+//     'av_position': 10000,
+//   }
+// );
+
+//   tag.events.send('event.create',
+// {
+// 'src_medium': "Forcecustom",
+// "src_campaign": "Campagne",
+// 'b:src_force': true
+// });
+
+/*
+tag.customVars.set({
+    site: {
+        1: 'test',
+        2: '[fr]',
+        
+    }
+});
+*/
+
+// MV TEST //
+/*
+tag.mvTesting.set({
+    test: '1[My_first_Test]',
+    waveId: 2,
+    creation: '3[Version3_page_subscription]',
+});
+tag.mvTesting.add({
+    variable: '6[Six]',
+    version: '7[Sept]'
+});
+*/
+</script>
+
+<script>
+// var params = new URLSearchParams(window.location.search);
+
+// if(params.get("at_medium")){
+//   tag.privacy.setVisitorOptin();
+//   tag.events.send('click.action', 
+//     {
+//       'click': 'passage_opt-in',
+//       'src_medium': params.get("at_medium"),
+//       'src_campaign': params.get("at_campaign"),
+//       'src_variant': params.get("at_variant"),
+//       'src_format': params.get("at_format"),
+//       'src_ad_channel': params.get("at_channel"),
+//       'src_sl_platform': params.get("at_platform"),
+//       'src_force': true
+//     }
+//   );
+// }
+
+function goal(){
+  tag.events.send('click.action',{
+goal_type: 'undefined',
+click: 'goal',
+paw2: 'undefined'
+});
+}
+
+const params = new URLSearchParams(window.location.search)
+for (const param of params) {
+  console.log(param)
+}
+
+function force(){
+  tag.privacy.setVisitorOptin();
+  tag.events.send('click.action',
+    {
+    "click": "clic optin",
+    "src_medium": params.get('at_medium'),
+    "src_campaign": params.get('at_campaign'),
+    "src_force": true
+    }
+);
+tag.dispatch();
+}
+
+function moteur(){
+  tag.internalSearch.set({
+keyword: 'maison',
+resultPageNumber: '1',
+});
+
+tag.click.set({
+    name:'testMoteur',
+    type: 'action',
+    customObject: {
+    ise_filter_periode: 'mois_en_cours',
+    ise_filter_theme: 'thematique'
+}});
+
+tag.dispatch();
+}
+
+function clicevent(){
+tag.events.send('click.action',
+  {
+    'click': 'conversion',
+    'goal_type': 'conversion clic'
+  }
+);
+}
+
+function fonctionoptin(){
+  tag.events.send('click.action',
+{
+    'click':'optin click',
+}	
+  )
+	tag.privacy.setVisitorOptin();
+}
+
+function fonctionexempt(){
+  tag.click.send({
+		elem:this, 
+		name:'exempt', 
+		level2:'clickLvl2', 
+		type:'action',
+	})
+	tag.privacy.setVisitorMode('cnil', 'exempt');
+}
+
+function fonctioncustom(){
+  tag.click.send({
+		elem:this, 
+		name:'no-consent', 
+		level2:'clickLvl2', 
+		type:'action',
+	})
+    tag.privacy.setVisitorMode('default', 'no-consent');
+}
+
+function fonctionoptout(){
+  tag.click.send({
+		elem:this, 
+		name:'opt-out', 
+		level2:'clickLvl2', 
+		type:'action',
+	})
+	tag.privacy.setVisitorOptout();
+}
+
+tag.dispatch();
+
+</script>
+</html>
+
